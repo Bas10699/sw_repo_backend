@@ -1,0 +1,2 @@
+[2020-02-27T16:09:57.017Z] [ip]: ::1 - [method]: GET [url]: /api/v1/item/get_item_all HTTP/1.1 [status]: 200 [response-time]: 7.377 ms [client]: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
+[2020-02-27T16:09:57.073Z] [ip]: ::1 - [method]: GET [url]: /favicon.ico HTTP/1.1 [status]: 404 [response-time]: 2.863 ms [client]: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36
