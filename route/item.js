@@ -22,6 +22,15 @@ router.post('/add_item',
         })
     })
 
+router.get('/get_item_status',
+    itemUtil.get_item_status(),
+    (req, res) => {
+        res.status(200).json({
+            success: true,
+            result: req.result
+        })
+    })
+
 router.get('/image/:id',
     function (req, res) {
 

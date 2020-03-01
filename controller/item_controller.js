@@ -50,3 +50,16 @@ exports.add_item = () => {
         })
     }
 }
+
+exports.get_item_status = () => {
+    return (req, res, next) => {
+        let sql = 'SELECT COUNT(item_status) AS count_status, item_status FROM item_store GROUP BY item_status ORDER BY COUNT(item_status) DESC;'
+        db.query(sql, (err, result) => {
+            if (err) throw err;
+            else {
+                req.result = result
+                next();
+            }
+        })
+    }
+}
