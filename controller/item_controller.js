@@ -35,6 +35,9 @@ exports.add_item = () => {
             item_type: req.body.item_type,
             item_date_of_birth: req.body.item_date_of_birth,
             item_place_of_birth: req.body.item_place_of_birth,
+            item_brand: req.body.item_brand,
+            item_gen: req.body.item_gen,
+            item_status: req.body.item_status,
             item_image: "item/image/default.png"
         }
         const item_image = req.body.item_image
@@ -97,6 +100,18 @@ exports.update_item = () => {
                 else {
                     next();
                 }
+            }
+        })
+    }
+}
+
+exports.delete_item = () => {
+    return (req, res, next) => {
+        const item_id = req.body.item_id
+        db.query('DELETE FROM item_store WHERE item_id=?', item_id, (err) => {
+            if (err) throw err;
+            else {
+                next()
             }
         })
     }

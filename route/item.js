@@ -30,6 +30,14 @@ router.get('/get_item_status',
             result: req.result
         })
     })
+router.post('/delete_item',
+    itemUtil.delete_item(),
+    (req, res) => {
+        res.status(200).json({
+            success: true,
+            message: "ลบข้อมูลสำเร็จ"
+        })
+    })
 
 router.get('/image/:id',
     function (req, res) {

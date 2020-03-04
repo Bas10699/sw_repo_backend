@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 03, 2020 at 03:11 PM
+-- Generation Time: Mar 04, 2020 at 01:04 PM
 -- Server version: 8.0.17
 -- PHP Version: 7.2.23RC1
 
@@ -40,7 +40,23 @@ CREATE TABLE `calendar_notes` (
 --
 
 INSERT INTO `calendar_notes` (`cn_id`, `cn_date`, `cn_time`, `cn_notes`) VALUES
-(1, '2020-03-02', '09:00:00', 'บันทึกความทรงจำ');
+(1, '2020-03-02', '09:00:00', 'บันทึกความทรงจำ'),
+(2, '2020-03-05', '12:20:00', 'บันทึกความทรงจำใหม่'),
+(4, '2020-03-13', '12:12:00', 'บันทึกรายละเอียด'),
+(5, '2020-03-03', '12:22:00', 'บันทึกรายละเอียด'),
+(6, '2020-03-07', '12:12:00', 'บันทึกรายละเอียด'),
+(7, '2020-03-08', '12:12:00', 'บันทึกรายละเอียด'),
+(8, '2020-03-10', '12:12:00', 'บันทึกรายละเอียด'),
+(10, '2020-03-12', '12:12:00', 'บันทึกรายละเอียด'),
+(11, '2020-04-02', '11:11:00', 'บันทึกรายละเอียด'),
+(13, '2020-03-19', '11:11:00', 'บันทึกรายละเอียด'),
+(14, '2020-04-11', '22:02:00', 'บันทึกรายละเอียด'),
+(15, '2020-04-06', '22:22:00', 'บันทึกรายละเอียด'),
+(16, '2020-04-07', '22:22:00', 'บันทึกรายละเอียด'),
+(17, '2020-04-08', '12:02:00', 'บันทึกรายละเอียด'),
+(18, '2020-04-09', '22:02:00', 'บันทึกรายละเอียด'),
+(19, '2020-04-10', '11:11:00', 'บันทึกรายละเอียด'),
+(20, '2020-03-09', '07:59:00', 'บันทึกรายละเอียด');
 
 -- --------------------------------------------------------
 
@@ -69,7 +85,8 @@ INSERT INTO `item_store` (`item_id`, `item_name`, `item_series_number`, `item_ty
 (4, 'CB-3304-21I', '452138tf', 'IP Fixed Camera', '2020-02-28', 'item/image/default.png', 'FLIR USA', '', '', 2),
 (5, 'CB-3102-11-I', '45789512', 'IP Fixed Camera', '2020-02-28', 'item/image/default.png', 'USA', '', '', 1),
 (6, 'CM-3102-11-I', '1234568', 'IP Fixed Dome Camera', '2020-02-28', 'item/image/item_6.png', 'USA', '', '', 1),
-(7, 'FLIR PT-612 HD', '456785', 'IP PTZ Long Range Thermal Camera', '2020-02-28', 'item/image/item_7.png', 'USA', '', '', 3);
+(7, 'FLIR PT-612 HD', '456785', 'IP PTZ Long Range Thermal Camera', '2020-02-28', 'item/image/item_7.png', 'USA', '', '', 3),
+(9, 'PTZ10W', '45789512', 'IP PTZ Long Range Thermal Camera', '2020-03-03', 'item/image/item_9.png', 'USA', 'FLIR', 'PT-612 HD', 1);
 
 -- --------------------------------------------------------
 
@@ -113,13 +130,13 @@ ALTER TABLE `typename`
 -- AUTO_INCREMENT for table `calendar_notes`
 --
 ALTER TABLE `calendar_notes`
-  MODIFY `cn_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cn_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `item_store`
 --
 ALTER TABLE `item_store`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `typename`
