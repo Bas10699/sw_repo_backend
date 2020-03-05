@@ -51,11 +51,12 @@ app.use(logger(configlog, {
 const item = require('./route/item')
 const typeName = require('./route/typeName')
 const calender = require('./route/calender')
+const airport = require('./route/airport')
 
-
-app.use(version+'item',(item))
-app.use(version+'typeName',(typeName))
-app.use(version+'calender',(calender))
+app.use(version + 'item', (item))
+app.use(version + 'typeName', (typeName))
+app.use(version + 'calender', (calender))
+app.use(version + 'airport', (airport))
 
 
 

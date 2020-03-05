@@ -22,6 +22,17 @@ router.post('/add_item',
         })
     })
 
+    router.post('/update_item',
+    validateUtil.validate_update_item(),
+    itemUtil.update_item(),
+    (req, res) => {
+        res.status(200).json({
+            success: true,
+            message: "เเก้ไขสำเร็จ"
+        })
+    })
+
+
 router.get('/get_item_status',
     itemUtil.get_item_status(),
     (req, res) => {

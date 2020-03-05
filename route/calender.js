@@ -30,4 +30,13 @@ router.post('/delete_canlender',
         })
     })
 
+router.post('/get_calender_data',
+    calenderUtil.get_calender_data(),
+    (req, res) => {
+        res.status(200).json({
+            success: true,
+            result: req.result
+        })
+    })
+
 module.exports = router

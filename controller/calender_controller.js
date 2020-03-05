@@ -2,7 +2,7 @@ const db = require('../connect/db_connect')
 
 exports.get_calender_all = () => {
     return (req, res, next) => {
-        let sql = 'SELECT * From calendar_notes'
+        let sql = 'SELECT * From calendar_notes ORDER BY `calendar_notes`.`cn_time` ASC'
         db.query(sql, (err, result) => {
             if (err) throw err;
             else {
@@ -19,6 +19,7 @@ exports.add_calender = () => {
             cn_date: req.body.cn_date,
             cn_time: req.body.cn_time,
             cn_notes: req.body.cn_notes,
+            cn_head: req.body.cn_head,
         }
         db.query('INSERT INTO calendar_notes set ? ', obj, (err) => {
             if (err) throw err;
@@ -35,6 +36,19 @@ exports.delete_calender = () => {
         db.query('DELETE FROM calendar_notes WHERE cn_id = ? ', cn_id, (err) => {
             if (err) throw err;
             else {
+                next();
+            }
+        })
+    }
+}
+
+exports.get_calender_data = () => {
+    return (req, res, next) => {
+        let date = req.body.date
+        db.query('SELECT * From calendar_notes WHERE cn_date = ?', date, (err, result) => {
+            if (err) throw err;
+            else {
+                req.result = result
                 next();
             }
         })
