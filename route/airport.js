@@ -14,6 +14,16 @@ router.get('/get_airport',
 
 router.post('/add_airport',
     // validate.validate_add_canlender(),
+    airportUtil.add_airport(),
+    (req, res) => {
+        res.status(200).json({
+            success: true,
+            message: "เพิ่มข้อมูลเรียบร้อย"
+        })
+    })
+
+router.post('/delete_airport',
+    // validate.validate_add_canlender(),
     airportUtil.delete_airport(),
     (req, res) => {
         res.status(200).json({
