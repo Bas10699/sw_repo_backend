@@ -41,3 +41,17 @@ exports.add_airport = () => {
         })
     }
 }
+
+exports.delete_airport = () => {
+    return (req, res, next) => {
+        console.log(req.body)
+        const ap_id =  req.body.ap_id
+        
+        db.query('DELETE FROM airport WHERE ap_id= ?', ap_id, (err) => {
+            if (err) throw err;
+            else {
+                next();
+            }
+        })
+    }
+}
