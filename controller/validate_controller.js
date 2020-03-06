@@ -11,7 +11,9 @@ exports.validate_add_item = () => {
             req.body.item_series_number &&
             req.body.item_type &&
             req.body.item_place_of_birth &&
-            req.body.item_date_of_birth) {
+            req.body.item_date_of_birth&&
+            req.body.item_airport&&
+            req.body.item_airport_date) {
             next();
         }
         else {
@@ -31,7 +33,9 @@ exports.validate_update_item = () => {
             req.body.item_series_number &&
             req.body.item_type &&
             req.body.item_place_of_birth &&
-            req.body.item_date_of_birth) {
+            req.body.item_date_of_birth&&
+            req.body.item_airport&&
+            req.body.item_airport_date) {
             next();
         }
         else {

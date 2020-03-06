@@ -20,6 +20,8 @@ exports.add_calender = () => {
             cn_time: req.body.cn_time,
             cn_notes: req.body.cn_notes,
             cn_head: req.body.cn_head,
+            cn_item_id: req.body.cn_item_id,
+            cn_color: req.body.cn_color,
         }
         db.query('INSERT INTO calendar_notes set ? ', obj, (err) => {
             if (err) throw err;
@@ -29,6 +31,7 @@ exports.add_calender = () => {
         })
     }
 }
+
 
 exports.delete_calender = () => {
     return (req, res, next) => {
@@ -46,6 +49,18 @@ exports.get_calender_data = () => {
     return (req, res, next) => {
         let date = req.body.date
         db.query('SELECT * From calendar_notes WHERE cn_date = ?', date, (err, result) => {
+            if (err) throw err;
+            else {
+                req.result = result
+                next();
+            }
+        })
+    }
+}
+
+exports.get_calender_itemName = () => {
+    return (req, res, next) => {
+        db.query('SELECT item_name FROM `item_store` GROUP BY item_name', (err, result) => {
             if (err) throw err;
             else {
                 req.result = result

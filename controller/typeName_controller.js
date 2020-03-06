@@ -15,7 +15,7 @@ exports.get_typeName_select = () => {
 
 exports.get_typeName = () => {
     return (req, res, next) => {
-        let sql = 'SELECT TN_name,COUNT(item_store.item_id) AS count_id FROM `typename` LEFT JOIN item_store ON item_store.item_type = typename.TN_id GROUP BY TN_id'
+        let sql = 'SELECT TN_id,TN_name,COUNT(item_store.item_id) AS count_id FROM `typename` LEFT JOIN item_store ON item_store.item_type = typename.TN_id GROUP BY TN_id'
         db.query(sql, (err, result) => {
             if (err) throw err;
             else {

@@ -12,7 +12,7 @@ router.get('/get_calender_all',
         })
     })
 
-router.post('/add_canlender',
+router.post('/add_calender',
     validate.validate_add_canlender(),
     calenderUtil.add_calender(),
     (req, res) => {
@@ -32,6 +32,14 @@ router.post('/delete_canlender',
 
 router.post('/get_calender_data',
     calenderUtil.get_calender_data(),
+    (req, res) => {
+        res.status(200).json({
+            success: true,
+            result: req.result
+        })
+    })
+router.get('/get_calender_itemName',
+    calenderUtil.get_calender_itemName(),
     (req, res) => {
         res.status(200).json({
             success: true,

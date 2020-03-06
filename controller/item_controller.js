@@ -2,7 +2,7 @@ const db = require('../connect/db_connect')
 
 exports.get_item_all = () => {
     return (req, res, next) => {
-        let sql = 'SELECT * From item_store LEFT JOIN typename ON item_store.item_type = typename.TN_id'
+        let sql = 'SELECT *,ap_name AS item_airport, TN_name AS item_type From item_store LEFT JOIN typename ON item_store.item_type = typename.TN_id LEFT JOIN  airport ON item_store.item_airport = airport.ap_id'
         db.query(sql, (err, result) => {
             if (err) throw err;
             else {
@@ -38,6 +38,8 @@ exports.add_item = () => {
             item_brand: req.body.item_brand,
             item_gen: req.body.item_gen,
             item_status: req.body.item_status,
+            item_airport: req.body.item_airport,
+            item_airport_date: req.body.item_airport_date,
             item_image: "item/image/default.png"
         }
         const item_image = req.body.item_image
@@ -79,6 +81,8 @@ exports.update_item = () => {
             item_type: req.body.item_type,
             item_date_of_birth: req.body.item_date_of_birth,
             item_place_of_birth: req.body.item_place_of_birth,
+            item_airport: req.body.item_airport,
+            item_airport_date: req.body.item_airport_date,
         }
         const item_image = req.body.item_image
         console.log(obj, req.body.item_id)

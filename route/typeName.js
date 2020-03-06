@@ -30,5 +30,14 @@ router.post('/add_typeName',
             message: "เพิ่มรายการสำเร็จ"
         })
     })
+router.post('/delete_typeName',
+    // validateUtil.validate_add_typeName(),
+    typeName.delete_typeName(),
+    (req, res) => {
+        res.status(200).json({
+            success: true,
+            message: "ลบรายการสำเร็จ"
+        })
+    })
 
 module.exports = router
