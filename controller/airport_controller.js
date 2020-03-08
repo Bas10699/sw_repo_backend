@@ -47,7 +47,7 @@ exports.delete_airport = () => {
         console.log(req.body)
         const ap_id =  req.body.ap_id
         
-        db.query('DELETE FROM airport WHERE ap_id= ?', ap_id, (err) => {
+        db.query('DELETE FROM airport WHERE ap_id = ?', ap_id, (err) => {
             if (err) throw err;
             else {
                 next();

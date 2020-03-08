@@ -40,6 +40,7 @@ exports.add_item = () => {
             item_status: req.body.item_status,
             item_airport: req.body.item_airport,
             item_airport_date: req.body.item_airport_date,
+            item_notes: req.body.item_notes,
             item_image: "item/image/default.png"
         }
         const item_image = req.body.item_image
@@ -82,6 +83,7 @@ exports.update_item = () => {
             item_date_of_birth: req.body.item_date_of_birth,
             item_place_of_birth: req.body.item_place_of_birth,
             item_airport: req.body.item_airport,
+            item_notes: req.body.item_notes,
             item_airport_date: req.body.item_airport_date,
         }
         const item_image = req.body.item_image
