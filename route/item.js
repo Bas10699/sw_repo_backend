@@ -11,6 +11,14 @@ router.get('/get_item_all',
             result: req.result
         })
     })
+router.post('/get_item',
+    itemUtil.get_item(),
+    (req, res) => {
+        res.status(200).json({
+            success: true,
+            result: req.result
+        })
+    })
 
 router.post('/add_item',
     validateUtil.validate_add_item(),
@@ -22,7 +30,7 @@ router.post('/add_item',
         })
     })
 
-    router.post('/update_item',
+router.post('/update_item',
     validateUtil.validate_update_item(),
     itemUtil.update_item(),
     (req, res) => {

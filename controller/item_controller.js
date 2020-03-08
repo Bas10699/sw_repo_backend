@@ -16,11 +16,18 @@ exports.get_item_all = () => {
 exports.get_item = () => {
     return (req, res, next) => {
         const item_id = req.body.item_id
-        let sql = 'SELECT * From item_store WHERE item_id = ?'
+        console.log(item_id)
+        let sql = 'SELECT * From item_store LEFT JOIN typename ON item_store.item_type = typename.TN_id LEFT JOIN  airport ON item_store.item_airport = airport.ap_id WHERE item_id = ?'
         db.query(sql, item_id, (err, result) => {
             if (err) throw err;
+            if(!result[0]){
+                console.log(result)
+                res.status(200).json({
+                    error_message:"ตรวจสอบไม่พบ ID"
+                })
+            }
             else {
-                req.result = result
+                req.result = result[0]
                 next();
             }
         })
