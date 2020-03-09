@@ -36,8 +36,7 @@ exports.validate_update_item = () => {
             req.body.item_place_of_birth &&
             req.body.item_date_of_birth&&
             req.body.item_airport&&
-            req.body.item_airport_date&&
-            req.body.item_notes) {
+            req.body.item_airport_date) {
             next();
         }
         else {
@@ -45,6 +44,24 @@ exports.validate_update_item = () => {
         }
     }
 }
+
+
+exports.validate_update_type = () => {
+    return (req, res, next) => {
+
+        if (req.body.TN_id &&
+            req.body.TN_name 
+            ) {
+            next();
+        }
+        else {
+            res.status(200).json(errorMessages.invalid_data)
+        }
+    }
+}
+
+
+
 
 exports.validate_add_canlender = () => {
     return (req, res, next) => {

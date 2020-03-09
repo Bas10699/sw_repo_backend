@@ -52,3 +52,14 @@ exports.delete_typeName = () =>{
         })
     }
 }
+exports.update_type = () => {
+    return (req, res, next) => {
+        db.query('UPDATE typename SET ? WHERE TN_id=?', [obj, req.body.item_id], (err) => {
+            if (err) throw err;
+            else {
+                req.result = result
+                next();
+            }
+        })
+    }
+}

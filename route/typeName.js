@@ -40,4 +40,14 @@ router.post('/delete_typeName',
         })
     })
 
+    router.post('/update_type',
+   validateUtil.validate_update_type(),
+    typeName.update_type(),
+    (req, res) => {
+        res.status(200).json({
+            success: true,
+            message: "ลบรายการสำเร็จ"
+        })
+    })
+
 module.exports = router

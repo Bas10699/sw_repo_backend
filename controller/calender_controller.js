@@ -58,6 +58,19 @@ exports.get_calender_data = () => {
     }
 }
 
+exports.get_calender_item = () => {
+    return (req, res, next) => {
+        let cn_item_id = req.body.item_id
+        db.query('SELECT * From calendar_notes WHERE cn_item_id = ?', cn_item_id, (err, result) => {
+            if (err) throw err;
+            else {
+                req.result = result
+                next();
+            }
+        })
+    }
+}
+
 exports.get_calender_itemName = () => {
     return (req, res, next) => {
         db.query('SELECT item_name FROM `item_store` GROUP BY item_name', (err, result) => {

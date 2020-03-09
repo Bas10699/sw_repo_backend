@@ -38,6 +38,16 @@ router.post('/get_calender_data',
             result: req.result
         })
     })
+
+router.post('/get_calender_item',
+    calenderUtil.get_calender_item(),
+    (req, res) => {
+        res.status(200).json({
+            success: true,
+            result: req.result
+        })
+    })
+
 router.get('/get_calender_itemName',
     calenderUtil.get_calender_itemName(),
     (req, res) => {

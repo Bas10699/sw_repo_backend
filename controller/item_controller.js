@@ -1,8 +1,8 @@
 const db = require('../connect/db_connect')
-
+const moment = require('moment')
 exports.get_item_all = () => {
     return (req, res, next) => {
-        let sql = 'SELECT *,ap_name AS item_airport, TN_name AS item_type From item_store LEFT JOIN typename ON item_store.item_type = typename.TN_id LEFT JOIN  airport ON item_store.item_airport = airport.ap_id'
+        let sql = 'SELECT *,ap_name AS item_airport, TN_name AS item_type From item_store LEFT JOIN typename ON item_store.item_type = typename.TN_id LEFT JOIN  airport ON item_store.item_airport = airport.ap_id ORDER BY item_id DESC'
         db.query(sql, (err, result) => {
             if (err) throw err;
             else {
@@ -20,10 +20,10 @@ exports.get_item = () => {
         let sql = 'SELECT * From item_store LEFT JOIN typename ON item_store.item_type = typename.TN_id LEFT JOIN  airport ON item_store.item_airport = airport.ap_id WHERE item_id = ?'
         db.query(sql, item_id, (err, result) => {
             if (err) throw err;
-            if(!result[0]){
+            if (!result[0]) {
                 console.log(result)
                 res.status(200).json({
-                    error_message:"ตรวจสอบไม่พบ ID"
+                    error_message: "ตรวจสอบไม่พบ ID"
                 })
             }
             else {
@@ -47,7 +47,6 @@ exports.add_item = () => {
             item_status: req.body.item_status,
             item_airport: req.body.item_airport,
             item_airport_date: req.body.item_airport_date,
-            item_notes: req.body.item_notes,
             item_image: "item/image/default.png"
         }
         const item_image = req.body.item_image
@@ -87,18 +86,17 @@ exports.update_item = () => {
             item_status: req.body.item_status,
             item_series_number: req.body.item_series_number,
             item_type: req.body.item_type,
-            item_date_of_birth: req.body.item_date_of_birth,
+            item_date_of_birth: moment(req.body.item_date_of_birth).format("YYYY-MM-DD"),
             item_place_of_birth: req.body.item_place_of_birth,
             item_airport: req.body.item_airport,
-            item_notes: req.body.item_notes,
-            item_airport_date: req.body.item_airport_date,
+            item_airport_date: moment(req.body.item_airport_date).format("YYYY-MM-DD"),
         }
         const item_image = req.body.item_image
         console.log(obj, req.body.item_id)
         db.query('UPDATE item_store SET ? WHERE item_id=?', [obj, req.body.item_id], (err) => {
             if (err) throw err;
             else {
-                if (item_image) {
+                if (req.body.image_check) {
                     let image = item_image.slice(item_image.indexOf(',') + 1)
                     require("fs").writeFile("./image/item/item_" + req.body.item_id + '.png', image, 'base64', function (err) {
                         if (err) throw err;
@@ -114,6 +112,7 @@ exports.update_item = () => {
                     });
                 }
                 else {
+
                     next();
                 }
             }
@@ -146,3 +145,27 @@ exports.get_item_status = () => {
     }
 }
 
+exports.add_calender = () => {
+    return (req, res, next) => {
+        console.log(req.body.cn_notes)
+        if (req.body.cn_notes) {
+            const obj = {
+                cn_date: req.body.cn_date,
+                cn_time: req.body.cn_time,
+                cn_notes: req.body.cn_notes,
+                cn_head: req.body.cn_head,
+                cn_item_id: req.body.cn_item_id,
+                cn_color: 1,
+            }
+            db.query('INSERT INTO calendar_notes set ? ', obj, (err) => {
+                if (err) throw err;
+                else {
+                    next();
+                }
+            })
+        } else {
+            next()
+        }
+
+    }
+}

@@ -32,6 +32,7 @@ router.post('/add_item',
 
 router.post('/update_item',
     validateUtil.validate_update_item(),
+    itemUtil.add_calender(),
     itemUtil.update_item(),
     (req, res) => {
         res.status(200).json({
