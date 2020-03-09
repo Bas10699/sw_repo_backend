@@ -41,7 +41,22 @@ exports.add_airport = () => {
         })
     }
 }
-
+exports.update_airport = () => {
+    return (req, res, next) => {
+        const obj ={
+            ap_name : req.body.ap_name
+        }
+        console.log(obj);
+        
+        db.query('UPDATE airport SET ? WHERE ap_id=?', [obj, req.body.ap_id], (err) => {
+            if (err) throw err;
+            else {
+                
+                next();
+            }
+        })
+    }
+}
 exports.delete_airport = () => {
     return (req, res, next) => {
         console.log(req.body)
@@ -54,4 +69,5 @@ exports.delete_airport = () => {
             }
         })
     }
+
 }

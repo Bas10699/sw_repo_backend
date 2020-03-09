@@ -48,7 +48,6 @@ exports.validate_update_item = () => {
 
 exports.validate_update_type = () => {
     return (req, res, next) => {
-
         if (req.body.TN_id &&
             req.body.TN_name 
             ) {
@@ -86,3 +85,17 @@ exports.validate_add_typeName = () => {
         }
     }
 }
+exports.validate_update_airport = () => {
+    return (req, res, next) => {
+        if (req.body.ap_id &&
+            req.body.ap_name 
+            ) {
+            next();
+        }
+        else {
+            res.status(200).json(errorMessages.invalid_data)
+        }
+    }
+}
+
+
