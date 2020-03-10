@@ -46,7 +46,7 @@ exports.update_airport = () => {
         const obj ={
             ap_name : req.body.ap_name
         }
-        console.log(obj);
+        console.log(req.body);
         
         db.query('UPDATE airport SET ? WHERE ap_id=?', [obj, req.body.ap_id], (err) => {
             if (err) throw err;
