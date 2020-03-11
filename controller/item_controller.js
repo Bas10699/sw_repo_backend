@@ -33,6 +33,68 @@ exports.get_item = () => {
         })
     }
 }
+exports.get_item_airport = () => {
+    return (req, res, next) => {
+        const item_id = req.body.ap_id
+        console.log(item_id)
+        let sql = 'SELECT * From item_store LEFT JOIN typename ON item_store.item_type = typename.TN_id LEFT JOIN  airport ON item_store.item_airport = airport.ap_id WHERE item_airport = ?'
+        db.query(sql, item_id, (err, result) => {
+            if (err) throw err;
+            if (!result[0]) {
+                console.log(result)
+                res.status(200).json({
+                    error_message: "ตรวจสอบไม่พบอุปกรณ์"
+                })
+            }
+            else {
+                req.result = result
+                next();
+            }
+        })
+    }
+}
+
+exports.get_item_type = () => {
+    return (req, res, next) => {
+        const item_id = req.body.item_type
+        console.log(item_id)
+        let sql = 'SELECT * From item_store LEFT JOIN typename ON item_store.item_type = typename.TN_id LEFT JOIN  airport ON item_store.item_airport = airport.ap_id WHERE item_type = ?'
+        db.query(sql, item_id, (err, result) => {
+            if (err) throw err;
+            if (!result[0]) {
+                console.log(result)
+                res.status(200).json({
+                    error_message: "ตรวจสอบไม่พบอุปกรณ์"
+                })
+            }
+            else {
+                req.result = result
+                next();
+            }
+        })
+    }
+}
+
+exports.get_item_brand = () => {
+    return (req, res, next) => {
+        const item_id = req.body.item_brand
+        console.log(item_id)
+        let sql = 'SELECT * From item_store LEFT JOIN typename ON item_store.item_type = typename.TN_id LEFT JOIN  airport ON item_store.item_airport = airport.ap_id WHERE item_brand = ?'
+        db.query(sql, item_id, (err, result) => {
+            if (err) throw err;
+            if (!result[0]) {
+                console.log(result)
+                res.status(200).json({
+                    error_message: "ตรวจสอบไม่พบอุปกรณ์"
+                })
+            }
+            else {
+                req.result = result
+                next();
+            }
+        })
+    }
+}
 
 exports.add_item = () => {
     return (req, res, next) => {
@@ -134,7 +196,20 @@ exports.delete_item = () => {
 
 exports.get_item_status = () => {
     return (req, res, next) => {
-        let sql = 'SELECT COUNT(item_status) AS count_status, item_status FROM item_store GROUP BY item_status ORDER BY COUNT(item_status) DESC;'
+        let sql = 'SELECT COUNT(item_status) AS count_status, item_status FROM item_store GROUP BY item_status ORDER BY item_status ASC;'
+        db.query(sql, (err, result) => {
+            if (err) throw err;
+            else {
+                req.result = result
+                next();
+            }
+        })
+    }
+}
+
+exports.get_item_brand_count = () => {
+    return (req, res, next) => {
+        let sql = 'SELECT COUNT(item_brand) AS count_brand, item_brand FROM item_store GROUP BY item_brand ORDER BY item_brand ASC;'
         db.query(sql, (err, result) => {
             if (err) throw err;
             else {

@@ -26,7 +26,20 @@ exports.add_calender = () => {
         db.query('INSERT INTO calendar_notes set ? ', obj, (err) => {
             if (err) throw err;
             else {
-                next();
+                if (req.body.item_status) {
+                    const objstatus = {
+                        item_status: req.body.item_status
+                    }
+                    db.query('UPDATE item_store SET ? WHERE item_id=?', [objstatus, req.body.cn_item_id], (err) => {
+                        if (err) throw err;
+
+                        next()
+
+                    })
+                } else {
+                    next();
+                }
+
             }
         })
     }

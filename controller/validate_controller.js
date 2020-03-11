@@ -12,8 +12,7 @@ exports.validate_add_item = () => {
             req.body.item_type &&
             req.body.item_place_of_birth &&
             req.body.item_date_of_birth&&
-            req.body.item_airport&&
-            req.body.item_airport_date) {
+            req.body.item_airport) {
             next();
         }
         else {

@@ -19,6 +19,30 @@ router.post('/get_item',
             result: req.result
         })
     })
+router.post('/get_item_airport',
+    itemUtil.get_item_airport(),
+    (req, res) => {
+        res.status(200).json({
+            success: true,
+            result: req.result
+        })
+    })
+router.post('/get_item_type',
+    itemUtil.get_item_type(),
+    (req, res) => {
+        res.status(200).json({
+            success: true,
+            result: req.result
+        })
+    })
+router.post('/get_item_brand',
+    itemUtil.get_item_brand(),
+    (req, res) => {
+        res.status(200).json({
+            success: true,
+            result: req.result
+        })
+    })
 
 router.post('/add_item',
     validateUtil.validate_add_item(),
@@ -44,6 +68,14 @@ router.post('/update_item',
 
 router.get('/get_item_status',
     itemUtil.get_item_status(),
+    (req, res) => {
+        res.status(200).json({
+            success: true,
+            result: req.result
+        })
+    })
+router.get('/get_item_brand_count',
+    itemUtil.get_item_brand_count(),
     (req, res) => {
         res.status(200).json({
             success: true,
