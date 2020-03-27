@@ -1,0 +1,6 @@
+﻿อุปกรณ์FLIRทั้งหมดของSecureWork
+
+ลำดับ,ชื่อ,ยี่ห้อ,รุ่น,ซีเรียล,ประเภท,สถานที่ติดตั้ง,วันที่ติดตั้ง,วันที่นำเข้า,นำเข้ามาจาก,สถานะ
+1,PayloadThermalFixed15W,FLIR,PL-313,44430,SparePartThermalCamera,ท่าอากาศยานสุวรรณภูมิ,Invaliddate,13/03/2020,US,เสีย
+2,PayloadColorSonyPTZ31W,FLIR,FCB-EX1010P,1115473,SparePartThermalCamera,Store@SecureWork,Invaliddate,13/03/2020,US,พร้อมใช้งาน
+3,VPCModuleforTestTAUCore,FLIR,421-0039-00,000000,SparePartThermalCamera,Store@SecureWork,Invaliddate,13/03/2020,UK,พร้อมใช้งาน
